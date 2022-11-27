@@ -1,6 +1,7 @@
 package cn.unnow.mallproduct.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,15 @@ import cn.unnow.common.utils.R;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+    /**
+     * 树形列表
+     */
+    @RequestMapping("/list/tree")
+    public R listWithTree(){
+        List<CategoryEntity> categoryEntities = categoryService.listWithTree();
+        return R.ok().put("data", categoryEntities);
+    }
 
     /**
      * 列表
